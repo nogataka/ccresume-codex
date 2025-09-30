@@ -29,12 +29,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sasazame/ccresume.git"
+    "url": "git+https://github.com/nogataka/ccresume-codex.git"
   },
   "bugs": {
-    "url": "https://github.com/sasazame/ccresume/issues"
+    "url": "https://github.com/nogataka/ccresume-codex/issues"
   },
-  "homepage": "https://github.com/sasazame/ccresume#readme",
+  "homepage": "https://github.com/nogataka/ccresume-codex#readme",
   "dependencies": {
     "@iarna/toml": "^2.2.5",
     "clipboardy": "^4.0.0",

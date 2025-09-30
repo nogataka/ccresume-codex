@@ -49,7 +49,7 @@ npm run typecheck  # tsc --noEmit
 公開版を試す:
 
 ```bash
-npx @sasazame/ccresume@latest      # npx 実行
+npx @nogataka/ccresume-codex@latest      # npx 実行
 ccresume                           # グローバルインストール済みならこれだけ
 ccresume .                         # カレントディレクトリ配下に限定
 ccresume --hide tool               # tool メッセージ非表示
@@ -98,6 +98,19 @@ ccresume -- --json --model o1-mini # codex CLI への追加引数
 - 確定したオプションはセッション再開 (`Enter`) と新規開始 (`n`) の両方で利用されます
 
 候補は `codex --help` を元にしているため、Codex CLI の更新時は必要に応じて確認してください。
+
+---
+
+## リリース & 自動デプロイ
+
+GitHub Actions の `Release` ワークフローが npm への公開を自動化します。設定と運用手順は次のとおりです。
+
+1. `NPM_TOKEN` シークレットをリポジトリに登録します。npm の自動化トークン (`npm token create --read-only` ではなく publish 権限付き *automation* トークン) を指定してください。
+2. バージョンを更新します。例: `npm version patch` (または `minor` / `major`) を実行し、コミットとタグ `vX.Y.Z` が作成されていることを確認します。
+3. 変更とタグを push (`git push origin main --follow-tags` など) すると、タグ `v*` がトリガーになってワークフローが走ります。
+4. ワークフローは `npm ci` → lint → typecheck → test → build を実行したあと `npm publish --access public` を呼び出します。公開に成功すると `@nogataka/ccresume-codex` が更新され、`npx @nogataka/ccresume-codex@latest` / `npm install -g @nogataka/ccresume-codex` で利用可能になります。
+
+必要に応じて GitHub Actions の手動実行 (`workflow_dispatch`) でも同じ処理が走ります。タグと `package.json` のバージョンが一致していない場合は安全のため失敗するようにしています。
 
 ---
 
