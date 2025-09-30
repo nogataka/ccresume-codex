@@ -4,7 +4,7 @@
   "description": "A TUI tool for browsing and resuming Codex conversations",
   "type": "module",
   "bin": {
-    "ccresume": "./dist/cli.js"
+    "ccresume": "dist/cli.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

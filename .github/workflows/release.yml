@@ -9,6 +9,7 @@ on:
 jobs:
   publish:
     name: Publish to npm
+    environment: CCRESUME-CODEX-ENV
     runs-on: ubuntu-latest
     permissions:
       contents: read
