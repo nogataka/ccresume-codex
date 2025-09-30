@@ -1,6 +1,6 @@
 {
   "name": "@nogataka/ccresume-codex",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A TUI tool for browsing and resuming Codex conversations",
   "type": "module",
   "bin": {
