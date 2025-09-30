@@ -245,7 +245,7 @@ export const CommandEditor: React.FC<CommandEditorProps> = ({ initialArgs, onCom
             Please refer to official docs for the latest valid options.
           </Text>
           <Text dimColor>
-            Options like -r, -c, -h may cause ccresume to malfunction.
+            Options like -r, -c, -h may cause ccresume-codex to malfunction.
           </Text>
         </Box>
 

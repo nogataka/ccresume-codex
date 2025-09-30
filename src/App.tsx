@@ -377,7 +377,7 @@ const App: React.FC<AppProps> = ({ codexArgs = [], currentDirOnly = false, hideO
   return (
     <Box flexDirection="column" width={dimensions.width} paddingX={1} paddingY={0}>
       <Box height={headerHeight} flexDirection="column">
-        <Text bold color="cyan">ccresume - Codex Conversation Browser</Text>
+        <Text bold color="cyan">ccresume-codex - Codex Conversation Browser</Text>
         <Box>
           <Text dimColor>
             {(() => {

@@ -54,9 +54,9 @@ if (hideIndex !== -1) {
 
 // Handle --help
 if (filteredArgs.includes('--help') || filteredArgs.includes('-h')) {
-  console.log(`ccresume - TUI for browsing Codex conversations
+  console.log(`ccresume-codex - TUI for browsing Codex conversations
 
-Usage: ccresume [.] [options]
+Usage: ccresume-codex [.] [options]
 
 Options:
   .                    Filter conversations to current directory only
@@ -78,10 +78,10 @@ Keyboard Controls:
   q             Quit
 
 Examples:
-  ccresume
-  ccresume .
-  ccresume -- --json --sandbox workspace-write
-  ccresume . -- --model o1-preview
+  ccresume-codex
+  ccresume-codex .
+  ccresume-codex -- --json --sandbox workspace-write
+  ccresume-codex . -- --model o1-preview
 
 Configuration:
   Key bindings can be customized in: ~/.config/ccresume/config.toml
@@ -92,7 +92,7 @@ Configuration:
     - Add the new key binding explicitly to your config.toml
     - Remove/modify the conflicting custom key binding
 
-For more info: https://github.com/sasazame/ccresume`);
+For more info: https://github.com/nogataka/ccresume-codex`);
   process.exit(0);
 }
 

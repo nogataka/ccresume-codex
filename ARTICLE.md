@@ -299,9 +299,9 @@ npx @nogataka/ccresume-codex@latest
 npm install -g @nogataka/ccresume-codex
 
 # インストール後は短いコマンドで実行可能
-ccresume
-ccresume .
-ccresume --hide tool
+ccresume-codex
+ccresume-codex .
+ccresume-codex --hide tool
 ```
 
 #### 🛠️ 開発者向け：ソースコードから実行
@@ -330,7 +330,7 @@ node dist/cli.js
 # 基本的な起動
 npx @nogataka/ccresume-codex@latest
 # または（グローバルインストール済みの場合）
-ccresume
+ccresume-codex
 
 # カレントディレクトリのセッションのみ表示
 npx @nogataka/ccresume-codex@latest .
@@ -345,7 +345,7 @@ npx @nogataka/ccresume-codex@latest -- --model o1-mini --json
 npx @nogataka/ccresume-codex@latest . --hide tool -- --sandbox workspace-write
 ```
 
-💡 **Tip**: グローバルインストールした場合は、`npx @nogataka/ccresume-codex@latest`を`ccresume`に置き換えて実行できます。
+💡 **Tip**: グローバルインストールした場合は、`npx @nogataka/ccresume-codex@latest`を`ccresume-codex`に置き換えて実行できます。
 
 ### キーバインド
 
