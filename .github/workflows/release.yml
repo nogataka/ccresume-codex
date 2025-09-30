@@ -12,7 +12,7 @@ jobs:
     environment: CCRESUME-CODEX-ENV
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -52,3 +52,10 @@ jobs:
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ${GITHUB_REF#refs/tags/}
+        run: |
+          NOTES=$(awk "/^## \[${TAG_NAME#v}\]/{flag=1;next}/^## \[/{flag=0}flag" CHANGELOG.md || true)
+          gh release create "${TAG_NAME}" --notes "${NOTES:-Automated release ${TAG_NAME}}"
