@@ -53,10 +53,23 @@ type EventMessagePayload = {
 };
 
 const stripTagWrappers = (source: string, tag: string) => {
-  return source.replace(
-    new RegExp(`<${tag}>([\\s\\S]*?)<\/${tag}>`, 'gi'),
-    (_match, inner: string) => inner,
-  );
+  const opening = `<${tag}>`;
+  const closing = `</${tag}>`;
+  let result = source;
+
+  let startIndex = result.indexOf(opening);
+  while (startIndex !== -1) {
+    const endIndex = result.indexOf(closing, startIndex + opening.length);
+    if (endIndex === -1) {
+      break;
+    }
+
+    const inner = result.slice(startIndex + opening.length, endIndex);
+    result = `${result.slice(0, startIndex)}${inner}${result.slice(endIndex + closing.length)}`;
+    startIndex = result.indexOf(opening, startIndex + inner.length);
+  }
+
+  return result;
 };
 
 const filterInstructionTags = (text: string) => {
