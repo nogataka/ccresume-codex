@@ -55,7 +55,8 @@ jobs:
       - name: Create GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG_NAME: ${GITHUB_REF#refs/tags/}
+          TAG_NAME: ${{ github.ref_name }}
         run: |
-          NOTES=$(awk "/^## \[${TAG_NAME#v}\]/{flag=1;next}/^## \[/{flag=0}flag" CHANGELOG.md || true)
-          gh release create "${TAG_NAME}" --notes "${NOTES:-Automated release ${TAG_NAME}}"
+          VERSION=${TAG_NAME#v}
+          NOTES=$(awk "/^## \[${VERSION}\]/{flag=1;next}/^## \[/{flag=0}flag" CHANGELOG.md || true)
+          gh release create "${TAG_NAME}" --title "${TAG_NAME}" --notes "${NOTES:-Automated release ${TAG_NAME}}"
