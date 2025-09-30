@@ -12,6 +12,15 @@
 
 ccresume (Codex Edition) は `~/.codex/sessions/` と `~/.codex/history.jsonl` のログを読み込み、ターミナル上で素早くブラウズ・検索・再開できる TUI です。Ink のフルスクリーン UI から Codex CLI (`codex`) を直接実行し、セッション再開や新規開始を一元的に行えます。
 
+## 利用ガイド
+
+1. 最新版をワンショットで試す場合は `npx @nogataka/ccresume-codex@latest` を実行します。依存関係はローカルにインストールされません。
+2. 常用するなら `npm install -g @nogataka/ccresume-codex` でグローバル導入すると、その後は `ccresume` だけで起動できます。
+3. プロジェクト配下だけを対象にしたい場合は `ccresume .` を利用します。
+4. Codex CLI (`codex`) が PATH に入っていることが前提です。不明な引数はすべて Codex CLI に委譲されるため、`ccresume -- --json` のように `--` で区切って渡せます。
+
+> 💡 **ヒント:** 実行時にターミナル出力が崩れる場合は `Ctrl+L` で画面をクリアし、`q` でアプリを終了できます。
+
 ### 主な機能
 
 - 📋 プロジェクト横断の Codex セッション一覧（最終更新順）
