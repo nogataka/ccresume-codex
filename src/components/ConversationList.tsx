@@ -11,13 +11,17 @@ interface ConversationListProps {
   selectedIndex: number;
   maxVisible?: number;
   isLoading?: boolean;
+  searchActive?: boolean;
+  searchQuery?: string;
 }
 
 export const ConversationList: React.FC<ConversationListProps> = ({ 
   conversations, 
   selectedIndex,
   maxVisible = 3,
-  isLoading = false
+  isLoading = false,
+  searchActive = false,
+  searchQuery = ''
 }) => {
   const { stdout } = useStdout();
   const terminalWidth = stdout?.columns || 80;
@@ -42,16 +46,29 @@ export const ConversationList: React.FC<ConversationListProps> = ({
   
   const visibleConversations = conversations.slice(startIndex, endIndex);
   const hasMoreBelow = endIndex < conversations.length;
+  const trimmedQuery = searchQuery.trim();
+  const headerText = isLoading
+    ? 'Loading conversations...'
+    : searchActive
+      ? `Search results: ${conversations.length}`
+      : `Select a conversation${conversations.length > 0 ? ` (${conversations.length} shown)` : ''}:`;
 
   return (
     <Box flexDirection="column" borderStyle="single" borderColor="cyan" paddingX={1} width="100%" overflow="hidden">
-      <Text bold color="cyan">{isLoading ? 'Loading conversations...' : `Select a conversation${conversations.length > 0 ? ` (${conversations.length} shown)` : ''}:`}</Text>
+      <Text bold color="cyan">{headerText}</Text>
+      {searchActive && !isLoading && (
+        <Text color="gray">{trimmedQuery ? `Query: "${trimmedQuery}"` : 'Hit keys to filter sessions'}</Text>
+      )}
       
       {isLoading ? (
         <Box flexDirection="column" height={maxVisible}>
         </Box>
       ) : conversations.length === 0 ? (
-        <Text color="gray">No conversations found</Text>
+        <Text color="gray">
+          {searchActive && trimmedQuery
+            ? `No sessions matched "${trimmedQuery}"`
+            : 'No conversations found'}
+        </Text>
       ) : (
         visibleConversations.map((conv, visibleIndex) => {
           const actualIndex = startIndex + visibleIndex;

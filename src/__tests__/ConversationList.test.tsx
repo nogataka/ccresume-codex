@@ -83,4 +83,20 @@ describe('ConversationList', () => {
     
     expect(lastFrame()).toContain('↓ 7 more on this page...');
   });
+
+  it('renders search state with query feedback', () => {
+    const { lastFrame } = render(
+      <ConversationList
+        conversations={[]}
+        selectedIndex={0}
+        searchActive
+        searchQuery="branch"
+      />
+    );
+
+    const output = lastFrame();
+    expect(output).toContain('Search results: 0');
+    expect(output).toContain('No sessions matched "branch"');
+    expect(output).toContain('Query: "branch"');
+  });
 });

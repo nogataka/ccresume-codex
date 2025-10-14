@@ -29,13 +29,13 @@ describe('configLoader', () => {
     it('should use XDG_CONFIG_HOME when set', () => {
       process.env.XDG_CONFIG_HOME = '/custom/config';
       const path = getConfigPath();
-      expect(path).toBe('/custom/config/ccresume/config.toml');
+      expect(path).toBe('/custom/config/ccresume-codex/config.toml');
     });
 
     it('should use ~/.config when XDG_CONFIG_HOME is not set', () => {
       mockHomedir.mockReturnValue('/home/user');
       const path = getConfigPath();
-      expect(path).toBe('/home/user/.config/ccresume/config.toml');
+      expect(path).toBe('/home/user/.config/ccresume-codex/config.toml');
     });
   });
 

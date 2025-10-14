@@ -6,7 +6,7 @@ import { Config, defaultConfig, KeyBindings } from '../types/config.js';
 
 export function getConfigPath(): string {
   const xdgConfigHome = process.env.XDG_CONFIG_HOME || join(homedir(), '.config');
-  return join(xdgConfigHome, 'ccresume', 'config.toml');
+  return join(xdgConfigHome, 'ccresume-codex', 'config.toml');
 }
 
 export function loadConfig(): Config {

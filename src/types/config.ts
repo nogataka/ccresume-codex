@@ -15,6 +15,8 @@ export interface KeyBindings {
   startNewSession: string[];
   openCommandEditor: string[];
   toggleFullView: string[];
+  searchToggle: string[];
+  searchClear: string[];
 }
 
 export interface Config {
@@ -39,5 +41,7 @@ export const defaultConfig: Config = {
     startNewSession: ['n'],
     openCommandEditor: ['-'],
     toggleFullView: ['f'],
+    searchToggle: ['/'],
+    searchClear: ['ctrl+u'],
   },
 };

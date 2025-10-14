@@ -1,5 +1,6 @@
-# ccresume configuration file
-# Copy this file to ~/.config/ccresume/config.toml and customize as needed
+# ccresume-codex configuration file
+# Copy this file to ~/.config/ccresume-codex/config.toml (or %APPDATA%/ccresume-codex/config.toml on Windows)
+# Customize keybindings to match your workflow. Restart `ccresume-codex` after editing.
 
 [keybindings]
 # Exit the application
@@ -28,11 +29,18 @@ pageNext = ["right"]
 pagePrevious = ["left"]
 
 # Session controls
-# Start a new Claude session in the selected project directory
+# Start a new Codex session in the selected project directory
 startNewSession = ["n"]
 
-# Open command editor to configure Claude CLI options
+# Open command editor to configure Codex CLI options
 openCommandEditor = ["-"]
 
 # Toggle full message view (experimental)
 toggleFullView = ["f"]
+
+# Search controls
+# Toggle search mode for project/session lists (default: /)
+searchToggle = ["/"]
+
+# Clear the active search query (default: Ctrl+U)
+searchClear = ["ctrl+u"]
